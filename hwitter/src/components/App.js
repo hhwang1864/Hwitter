@@ -3,6 +3,7 @@ import AppRouter from "./Router";
 import Router from "components/Router";
 import auth from "myBase";
 function App() {
+  console.log(auth)
 
   const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser);
   return (

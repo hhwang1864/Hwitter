@@ -1,9 +1,13 @@
+import auth from "myBase";
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 
 const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [newAccount, setNewAccount] = useState(true)
 
   const onChange = (event) => {
     const { name, value} = event.target
@@ -14,13 +18,31 @@ const Auth = () => {
     }
   }
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault()
+    try {
+      let data;
+      if(newAccount) {
+        // here is where we create account
+        data = await createUserWithEmailAndPassword(
+          auth, email, password
+        )
+
+      } else
+      data = await signInWithEmailAndPassword(
+        auth, email, password
+      )
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   return(
     <div>
       <form action="" onSubmit={onSubmit}>
+
         <input
           name="email"
           type="text"
@@ -37,7 +59,7 @@ const Auth = () => {
         />
         <input
           type="submit"
-          value="Log in"
+          value={newAccount ? "Create Account": "Log in"}
         />
       </form>
 
