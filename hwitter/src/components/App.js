@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppRouter from "./Router";
 import Router from "components/Router";
-import auth from "myBase";
-function App() {
-  console.log(auth)
+import { auth } from "harrybase";
 
-  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser);
+function App() {
+  const [init, setInit] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(()=> {
+    auth.onAuthStateChanged((user) => {
+      if(user) {
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+      setInit(true)
+    })
+
+  }, [])
   return (
     <div className="App">
       <React.Fragment>
-      <AppRouter isLoggedIn={isLoggedIn} />
+      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Starting... please wait a second..."}
       <footer> &copy; Hojin(Harry) {new Date().toDateString()}   </footer>
       </React.Fragment>
     </div>
