@@ -1,4 +1,4 @@
 import React from "react";
 
 
-export default () => <span>Edit profile</span>
+export default () => <span>Edit profile.</span>
