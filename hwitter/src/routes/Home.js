@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, onSnapshot } from "firebase/firestore";
 import { dbService } from "../harrybase";
+import Hweet from "components/Hweet";
 
 
 
-const Home = () => {
+
+const Home = ({ userObj }) => {
+
   const [hweet, setHweet] = useState('')
   const [hweets, setHweets] = useState([])
 
-  const getHweets = async () => {
-    const dbHweets = await getDocs(collection(dbService, "hweet"))
-    dbHweets.forEach( (doc)=> {
-      const hweetObject = {
-        ...doc.data(),
-        id: doc.id
-      }
-      setHweets((prev) => [hweetObject, ...prev])
-    })
-  }
+
   useEffect( () => {
-    getHweets()
+    onSnapshot(collection(dbService, "hweet"), (snapshot) => {
+      const hweetArray = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setHweets(hweetArray)
+    })
   }, [])
 
   const onSubmit = (event) => {
     event.preventDefault()
     addDoc(collection(dbService, "hweet"), {
-        hweet,
-        createdAt: Date.now()
-      });
-      setHweet("")
+      text: hweet,
+      createdAt: Date.now(),
+      creatorId: userObj.uid
+
+    });
+    setHweet("");
   }
 
   const onChange = (event) => {
@@ -36,7 +38,7 @@ const Home = () => {
     setHweet(value)
 
   }
-  console.log(hweets.slice(1))
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -50,14 +52,15 @@ const Home = () => {
         <input type="submit" value="Hweet" />
       </form>
       <div>
-        {hweets.map(hweet =>
-          <div key={hweet.id}>
-            <h4>{hweet.hweet}</h4>
-          </div>
-          )}
+        {hweets.map((hweet) => (
+          <Hweet
+            key={hweet.id}
+            hweetObj={hweet}
+            isOwner={hweet.creatorId === userObj.uid}
+          />
+        ))}
       </div>
     </div>
   );
-}
-
-export default Home
+};
+export default Home;
