@@ -6,17 +6,15 @@ import { dbService } from "../harrybase";
 
 const Home = () => {
   const [hweet, setHweet] = useState('')
-
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     event.preventDefault()
-    await addDoc(collection(dbService, "hweet"), {
+    addDoc(collection(dbService, "hweet"), {
         name: hweet,
         state: "CA",
         country: "USA"
       });
       setHweet("")
   }
-
 
   const onChange = (event) => {
     const {value} = event.target
