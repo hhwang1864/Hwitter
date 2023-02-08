@@ -1,14 +1,22 @@
-import { db } from "harrybase";
 import React, { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { dbService } from "../harrybase";
+
+
 
 const Home = () => {
   const [hweet, setHweet] = useState('')
-  const onSubmit = (event) => {
+
+  const onSubmit = async (event) => {
     event.preventDefault()
-    console.log(db)
-
-
+    await addDoc(collection(dbService, "hweet"), {
+        name: hweet,
+        state: "CA",
+        country: "USA"
+      });
+      setHweet("")
   }
+
 
   const onChange = (event) => {
     const {value} = event.target
@@ -16,12 +24,20 @@ const Home = () => {
 
   }
 
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
+        <input
+          value={hweet}
+          onChange={onChange}
+          type="text"
+          placeholder="What's on your mind?"
+          maxLength={120}
+        />
+        <input type="submit" value="Hweet" />
+      </form>
+    </div>
+  );
 }
-  <div>
-    <form action="" onSubmit={onsubmit}>
-      <input type="text" placeholder="What's on your mind?" maxLength={120} />
-      <input type="text" value="Hweet" />
-    </form>
-  </div>
 
 export default Home
