@@ -11,22 +11,36 @@ function App() {
     auth.onAuthStateChanged((user) => {
       if(user) {
         setIsLoggedIn(true)
-        setUserObj(user)
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: (args) => user.updateProfile(args)
+        })
       } else {
         setIsLoggedIn(false)
       }
       setInit(true)
     })
-
   }, [])
+  const reFreshUser = () => {
+    const user = auth.currentUser
+    setUserObj({
+      displayName: user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => user.updateProfile(args)
+    })
+  }
   return (
     <div className="App">
       <React.Fragment>
       {init ? (
-        <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
-      ) : (
+        <AppRouter
+          reFreshUser={reFreshUser}
+          isLoggedIn={isLoggedIn}
+          userObj={userObj} />
+        ) : (
         "Initializing..."
-      )}
+        )}
       <footer> &copy; Hojin(Harry) {new Date().toDateString()}   </footer>
       </React.Fragment>
     </div>

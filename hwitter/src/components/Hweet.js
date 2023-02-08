@@ -1,6 +1,8 @@
-import { dbService } from "harrybase";
+import { dbService, storageService } from "harrybase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { deleteObject } from "firebase/storage";
 import React, { useState } from "react";
+import { ref } from "firebase/storage";
 
 
 const Hweet = ({ hweetObj, isOwner }) => {
@@ -11,6 +13,9 @@ const Hweet = ({ hweetObj, isOwner }) => {
     const ok = window.confirm("Are you sure you want to delete this Hweet?")
     if(ok) {
       await deleteDoc(doc(dbService, "hweet", hweetObj.id))
+      const storageRef = ref(storageService,  hweetObj.attachmentUrl)
+      console.log(storageRef)
+      await  deleteObject(ref(storageService,  hweetObj.attachmentUrl))
     }
   }
 
@@ -20,7 +25,7 @@ const Hweet = ({ hweetObj, isOwner }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault()
-    console.log(hweetObj,newHweet)
+    // console.log(hweetObj,newHweet)
     await updateDoc(doc(dbService, "hweet",hweetObj.id), {
       text: newHweet
     })
@@ -53,6 +58,9 @@ const Hweet = ({ hweetObj, isOwner }) => {
         ):(
           <React.Fragment>
         <h4>{hweetObj.text}</h4>
+          {hweetObj.attachmentUrl && (
+            <img src={hweetObj.attachmentUrl} width="50px" height="50px" alt="" />
+          )}
         {isOwner && (
           <React.Fragment>
             <button onClick={onDeleteClick}>Delete Hweet</button>

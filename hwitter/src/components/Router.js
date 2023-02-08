@@ -6,17 +6,23 @@ import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 
 
-const AppRouter = ( {isLoggedIn, userObj}) => {
+const AppRouter = ({ reFreshUser, isLoggedIn, userObj }) => {
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+      {isLoggedIn && <Navigation userObj={userObj} />}
       <Routes>
         {isLoggedIn ?
           <React.Fragment>
             <Route
               exact path="/" element={<Home userObj={userObj}/>}>
             </Route>
-            <Route exact path="/profile" element={<Profile />}> </Route>
+            <Route
+              exact path="/profile"
+              element={<Profile
+                userObj={userObj}
+                reFreshUser={reFreshUser}
+              />}>
+            </Route>
           </React.Fragment>
          : (
           <React.Fragment>
