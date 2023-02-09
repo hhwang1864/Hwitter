@@ -40,6 +40,7 @@ const AuthForms = () => {
 
  return(
   <React.Fragment>
+    <h1 className="headline-new-user">New to twitter?</h1>
     <form action="" onSubmit={onSubmit} className="container">
 
     <input

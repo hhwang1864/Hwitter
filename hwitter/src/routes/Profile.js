@@ -7,7 +7,7 @@ import { updateProfile } from "firebase/auth";
 
 const Profile = ({ userObj, reFreshUser }) => {
   const navigate = useNavigate()
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName)
+  const [newDisplayName, setNewDisplayName] = useState(`Welcome to ${userObj.displayName}'s Profile`)
 
   const onLogOutClick = () => {
     auth.signOut()
@@ -46,6 +46,7 @@ const Profile = ({ userObj, reFreshUser }) => {
       })
       reFreshUser()
     }
+    setNewDisplayName(`Welcome to ${event.target[0].value}'s profile`)
   };
 
   return (
@@ -54,7 +55,7 @@ const Profile = ({ userObj, reFreshUser }) => {
         <input
           onChange={onChange}
           type="text"
-          placeholder="Display name"
+          placeholder="Update Name:"
           value={newDisplayName}
           autoFocus
         />

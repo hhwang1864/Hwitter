@@ -4,6 +4,7 @@ import Auth from "routes/Auth";
 import Home from "../routes/Home";
 import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
+import Settings from "routes/Settings";
 
 
 const AppRouter = ({ reFreshUser, isLoggedIn, userObj }) => {
@@ -33,6 +34,8 @@ const AppRouter = ({ reFreshUser, isLoggedIn, userObj }) => {
                 userObj={userObj}
                 reFreshUser={reFreshUser}
               />}>
+            </Route>
+            <Route exact path="/settings" element={<Settings userObj={userObj} />}>
             </Route>
           </Route>
          : (
