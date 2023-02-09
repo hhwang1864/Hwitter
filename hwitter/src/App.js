@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AppRouter from "./Router";
+import AppRouter from "./components/Router";
 import { auth } from "harrybase";
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
       setInit(true)
     })
   }, [])
+
   const reFreshUser = () => {
     const user = auth.currentUser
     setUserObj({
@@ -30,6 +31,7 @@ function App() {
       updateProfile: (args) => user.updateProfile(args)
     })
   }
+
   return (
     <div className="App">
       <React.Fragment>
@@ -39,9 +41,9 @@ function App() {
           isLoggedIn={isLoggedIn}
           userObj={userObj} />
         ) : (
-        "Initializing..."
+        "Starting... Please wait a moment"
         )}
-      <footer> &copy; Hojin(Harry) {new Date().toDateString()}   </footer>
+      <footer className="footer_harry"> &copy; Hojin(Harry) {new Date().toDateString()}   </footer>
       </React.Fragment>
     </div>
   );

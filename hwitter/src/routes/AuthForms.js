@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from "harrybase";
 import React, { useState } from "react";
 
+
 const AuthForms = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -39,7 +40,7 @@ const AuthForms = () => {
 
  return(
   <React.Fragment>
-    <form action="" onSubmit={onSubmit}>
+    <form action="" onSubmit={onSubmit} className="container">
 
     <input
       name="email"
@@ -47,6 +48,7 @@ const AuthForms = () => {
       placeholder="Email"
       required value={email}
       onChange={onChange}
+      className="authInput"
     />
     <input
       name="password"
@@ -54,14 +56,16 @@ const AuthForms = () => {
       placeholder="Password"
       required value={password}
       onChange={onChange}
+      className="authInput"
     />
     <input
       type="submit"
       value={newAccount ? "Create Account": "Log in"}
+      className="authInput authSubmit"
     />
-    {error.slice(10)}
+    {error && <span className="authError">{error}</span>}
     </form>
-    <span onClick={toggleAccount}>
+    <span onClick={toggleAccount} className="authSwitch">
     {newAccount ? "Sign in" : "Create Account"}
     </span>
   </React.Fragment>

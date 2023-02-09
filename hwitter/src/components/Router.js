@@ -8,11 +8,22 @@ import Profile from "routes/Profile";
 
 const AppRouter = ({ reFreshUser, isLoggedIn, userObj }) => {
   return (
+    <div
+    style={{
+      maxWidth: 890,
+      width: "100%",
+      margin: "0 auto",
+      marginTop: 80,
+      display: "flex",
+      justifyContent: "center",
+    }}
+
+    >
     <Router>
       {isLoggedIn && <Navigation userObj={userObj} />}
       <Routes>
         {isLoggedIn ?
-          <React.Fragment>
+          <Route>
             <Route
               exact path="/" element={<Home userObj={userObj}/>}>
             </Route>
@@ -23,7 +34,7 @@ const AppRouter = ({ reFreshUser, isLoggedIn, userObj }) => {
                 reFreshUser={reFreshUser}
               />}>
             </Route>
-          </React.Fragment>
+          </Route>
          : (
           <React.Fragment>
           <Route
@@ -33,6 +44,7 @@ const AppRouter = ({ reFreshUser, isLoggedIn, userObj }) => {
         )}
       </Routes>
     </Router>
+    </div>
   )
 }
 export default AppRouter;

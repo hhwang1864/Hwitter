@@ -3,6 +3,8 @@ import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { deleteObject } from "firebase/storage";
 import React, { useState } from "react";
 import { ref } from "firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 
 const Hweet = ({ hweetObj, isOwner }) => {
@@ -39,41 +41,46 @@ const Hweet = ({ hweetObj, isOwner }) => {
 
   return (
 
-    <div>
+    <div className="hweet">
       {
         editing ? (
           <React.Fragment>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="container hweetEdit">
             <input
               type="text"
               placeholder="Edit your Hweet"
               value={newHweet}
               required
+              autoFocus
               onChange={onChange}
+              className="formInput"
             />
-            <input type="submit" value="Update Hweet" />
+            <input type="submit" value="Update Hweet" className="formBtn" />
           </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          <span
+            onClick={toggleEditing}
+            className="formBtn cancelBtn">
+            Cancel
+          </span>
           </React.Fragment>
         ):(
           <React.Fragment>
-        <h4>{hweetObj.text}</h4>
-          {hweetObj.attachmentUrl && (
-            <img src={hweetObj.attachmentUrl} width="50px" height="50px" alt="" />
-          )}
-        {isOwner && (
-          <React.Fragment>
-            <button onClick={onDeleteClick}>Delete Hweet</button>
-            <button onClick={toggleEditing}>Edit Hweet</button>
-        </React.Fragment>
-        )}
-        </React.Fragment>
-      )}
-
+          <h4>{hweetObj.text}</h4>
+          {hweetObj.attachmentUrl && <img src={hweetObj.attachmentUrl} alt="" />}
+            {isOwner && (
+              <div className="hweet__actions">
+                <span onClick={onDeleteClick}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </span>
+                <span onClick={toggleEditing}>
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </span>
+              </div>
+            )}
+          </React.Fragment>
+            )}
     </div>
-  )
-}
-
-
+  );
+};
 
 export default Hweet

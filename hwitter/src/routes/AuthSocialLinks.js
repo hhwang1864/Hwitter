@@ -2,6 +2,12 @@ import React from "react";
 import {
   GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "harrybase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGoogle,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
+
 
 const AuthSocialLinks = () => {
   const onSocialClick = (event) => {
@@ -17,11 +23,12 @@ const AuthSocialLinks = () => {
     }
 
   return(
-    <React.Fragment>
-      <button onClick={onSocialClick} name="google">Continue with Google</button>
 
-      <button onClick={onSocialClick} name="github">Continue with Github</button>
-    </React.Fragment>
+    <div className="authBtns">
+      <button onClick={onSocialClick} name="google"  className="authBtn" >Continue with Google <FontAwesomeIcon icon={faGoogle} /></button>
+
+      <button onClick={onSocialClick} name="github"  className="authBtn">Continue with Github <FontAwesomeIcon icon={faGithub} /></button>
+    </div>
   )
 }
 

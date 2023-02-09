@@ -160,6 +160,7 @@ form {
 }
 
 
+
 .hweetEdit .formBtn {
   cursor: pointer;
   margin-top: 15px;
@@ -213,9 +214,24 @@ form {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+
 }
+
+.authContainer_child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border: 2px solid red;
+  border-radius: 20px;
+  border: none;
+  width: 150px;
+}
+
+.authContainer_child:firt-child {
+  margin-right: 20px  ;
+}
+
 
 .authBtns {
   display: flex;
@@ -233,7 +249,7 @@ form {
   text-align: center;
   width: 150px;
   background: white;
-  cursor: pointer;
+
 }
 
 /* AuthForm */
@@ -272,4 +288,12 @@ form {
   display: block;
   font-size: 12px;
   text-decoration: underline;
+}
+
+.footer_harry {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;   /* Height of the footer */
+
 }
