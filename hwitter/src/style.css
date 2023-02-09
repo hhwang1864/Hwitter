@@ -73,23 +73,19 @@ form {
 /* Profile Page */
 
 .profileForm {
-  position: absolute;
   border-bottom: 1px solid rgba(255, 255, 255, 0.9);
   padding-bottom: 30px;
-  width: 30%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  top: 120px;
+  ;
 }
 
 .logOut {
-  position: absolute;
   margin-top: 50px;
-  top: 160px;
-  width: 30%;
 }
 
-/* Hwitter Factory */
+/* Nwitter Factory */
 
 .factoryForm {
   display: flex;
@@ -165,7 +161,6 @@ form {
 }
 
 
-
 .hweetEdit .formBtn {
   cursor: pointer;
   margin-top: 15px;
@@ -188,14 +183,15 @@ form {
 .hweet h4 {
   font-size: 14px;
 }
+.hweet-author{
+  font-weight: bolder;
+  font-size: 17px;
+}
 
 .hweet img {
-  right: -10px;
-  top: 20px;
-  position: absolute;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+
+  width: 100%;
+  height: 60%;
   margin-top: 10px;
 }
 
@@ -219,23 +215,12 @@ form {
   display: inline-block;
   flex-direction: column;
   height: 100vh;
-  justify-content: space-between;
-
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 50px;
+  margin-left: 50px;
 }
-
-.authContainer_child {
-  width: 50%;
-  float: left;
-  border-radius: 20px;
-  border: none;
-  width: 100px;
-}
-
-
-.authContainer_child:firt-child {
-  margin-right: 20px  ;
-}
-
 
 .authBtns {
   display: flex;
@@ -253,10 +238,17 @@ form {
   text-align: center;
   width: 150px;
   background: white;
-
+  cursor: pointer;
+}
+.front-icons {
+  text-align: center;
 }
 
+
 /* AuthForm */
+.emailInput {
+  margin-top: 20px;
+}
 
 .authInput {
   max-width: 320px;
@@ -267,7 +259,7 @@ form {
   margin-bottom: 10px;
   font-size: 12px;
   color: black;
-}
+  }
 
 .authSubmit {
   text-align: center;
@@ -277,7 +269,6 @@ form {
   cursor: pointer;
 }
 
-
 .authError {
   color: tomato;
   text-align: center;
@@ -286,28 +277,21 @@ form {
 }
 
 .authSwitch {
-  color: black;
+  color: #04aaff;
   cursor: pointer;
   margin-top: 10px;
   margin-bottom: 50px;
   display: block;
   font-size: 12px;
   text-decoration: underline;
-  text-align: center;
-  background-color: rgba(122, 215, 75, 0.9);
-  border-radius: 15px;
-  height: 20px;
-  width: 30%;
 }
 
-.footer_harry {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:60px;   /* Height of the footer */
-
+.news-list {
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
-.headline-new-user {
-  margin-top: 7px;
+.news-headline{
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

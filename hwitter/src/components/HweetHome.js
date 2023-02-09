@@ -60,14 +60,16 @@ const HweetHome = ({ userObj }) => {
           value={hweet}
           onChange={onChange}
           type="text"
-          placeholder="What's on your mind?"
+          placeholder="What's happening?"
           maxLength={120}
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
       <label htmlFor="attach-file" className="factoryInput__label">
         <span>Add photos</span>
-        <FontAwesomeIcon icon={faPlus} />
+        <FontAwesomeIcon
+          icon={faPlus}
+          style={{cursor:"pointer"}} />
       </label>
       <input
         id="attach-file"

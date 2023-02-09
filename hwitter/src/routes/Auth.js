@@ -14,24 +14,26 @@ const Auth = () => {
     <React.Fragment>
       <News />
       <div className="authContainer">
-      <FontAwesomeIcon
-        className="authContainer_child twitter_icon"
-        icon={faTwitter}
-        color={"#04AAFF"}
-        size="5x"
-        style={{ marginBottom: 10 }}
-      />
-      <FontAwesomeIcon
-        className="authContainer_child hastag_icon"
-        icon={faHashtag}
-        color={"#04AAFF"}
-        size="5x"
-        style={{ marginBottom: 10 }}
-      />
-      <AuthForms />
-      <div>
-      <AuthSocialLinks />
-      </div>    </div>
+        <div className="front-icons">
+        <FontAwesomeIcon
+          className="authContainer_child twitter_icon"
+          icon={faTwitter}
+          color={"#04AAFF"}
+          size="5x"
+          style={{ marginBottom: 10, padding:50}}
+                />
+        <FontAwesomeIcon
+          className="authContainer_child hastag_icon"
+          icon={faHashtag}
+          color={"#04AAFF"}
+          size="5x"
+          style={{ marginBottom: 10 }}
+        />
+        </div>
+        <AuthForms />
+        <div>
+        <AuthSocialLinks />
+        </div>    </div>
     </React.Fragment>
   )
 }

@@ -49,7 +49,7 @@ const AuthForms = () => {
       placeholder="Email"
       required value={email}
       onChange={onChange}
-      className="authInput"
+      className="authInput emailInput"
     />
     <input
       name="password"

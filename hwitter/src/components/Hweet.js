@@ -65,7 +65,7 @@ const Hweet = ({ hweetObj, isOwner }) => {
           </React.Fragment>
         ):(
           <React.Fragment>
-            <h3>{hweetObj.author}</h3>
+            <h3 className="hweet-author">{hweetObj.author}</h3>
           <h4>{hweetObj.text}</h4>
           {hweetObj.attachmentUrl && <img src={hweetObj.attachmentUrl} alt="" />}
             {isOwner && (
