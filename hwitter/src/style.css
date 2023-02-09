@@ -73,15 +73,20 @@ form {
 /* Profile Page */
 
 .profileForm {
+  position: absolute;
   border-bottom: 1px solid rgba(255, 255, 255, 0.9);
   padding-bottom: 30px;
-  width: 100%;
+  width: 30%;
   display: flex;
   flex-direction: column;
+  top: 120px;
 }
 
 .logOut {
+  position: absolute;
   margin-top: 50px;
+  top: 160px;
+  width: 30%;
 }
 
 /* Hwitter Factory */

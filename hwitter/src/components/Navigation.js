@@ -7,7 +7,7 @@ import { faCog, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = ({ userObj }) => (
   <nav>
-    <ul style={{ display: "flex", justifyContent: "center", marginTop: 50, border: "2px solid red" }}>
+    <ul style={{ display: "flex", position: "absolute", justifyContent: "center", marginTop: 50, border: "2px solid green", marginLeft: "100px", top: 1  }}>
       <li>
         <Link to="/" style={{ marginRight: 10 }}>
           <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />

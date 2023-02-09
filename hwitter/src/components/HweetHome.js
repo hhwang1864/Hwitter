@@ -27,6 +27,7 @@ const HweetHome = ({ userObj }) => {
       createdAt: Date.now(),
       creatorId: userObj.uid,
       attachmentUrl,
+      author: userObj.displayName
     }
 
     await addDoc(collection(dbService, "hweet"), hweetObj)

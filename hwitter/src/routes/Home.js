@@ -11,6 +11,7 @@ const Home = ({ userObj }) => {
     onSnapshot(collection(dbService, "hweet"), (snapshot) => {
       const hweetArray = snapshot.docs.map(doc => ({
         id: doc.id,
+        author: doc.creatorId,
         ...doc.data()
       }))
       setHweets(hweetArray)
@@ -28,6 +29,7 @@ const Home = ({ userObj }) => {
             key={hweet.id}
             hweetObj={hweet}
             isOwner={hweet.creatorId === userObj.uid}
+            author={hweet.author}
           />
         ))}
       </div>

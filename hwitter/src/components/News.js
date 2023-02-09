@@ -1,4 +1,3 @@
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import Api from "./newsapi";
 
